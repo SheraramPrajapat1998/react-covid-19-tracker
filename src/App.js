@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import FormControl from "@material-ui/core/FormControl";
-import { Select, MenuItem } from "@material-ui/core";
+import { Select, MenuItem, Card } from "@material-ui/core";
 import InfoBox from "./components/InfoBox/InfoBox";
+import Map from "./components/Map/Map";
 
 // https://disease.sh/v3/covid-19/countries
 
@@ -40,29 +41,37 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__header">
-        {/* Header with countries */}
-        <h1>COVID-19 TRACKER</h1>
-        <FormControl className="app__dropdown">
-          <Select variant="outlined" value={country} onChange={onCountryChange}>
-            <MenuItem value="worldwide">Worldwide</MenuItem>
-            {allCountries}
-          </Select>
-        </FormControl>
+      <div className="app__left">
+        <div className="app__header">
+          {/* Header with countries */}
+          <h1>COVID-19 TRACKER</h1>
+          <FormControl className="app__dropdown">
+            <Select
+              variant="outlined"
+              value={country}
+              onChange={onCountryChange}
+            >
+              <MenuItem value="worldwide">Worldwide</MenuItem>
+              {allCountries}
+            </Select>
+          </FormControl>
+        </div>
+
+        {/* InfoBoxes */}
+        <div className="app__stats">
+          <InfoBox cases={120} total={1000} title="Coronavirus Cases" />
+          <InfoBox cases={120} total={1000} title="Recovered" />
+          <InfoBox cases={120} total={1000} title="Deaths" />
+        </div>
+        {/* Map */}
+        <Map/>
       </div>
 
-      {/* InfoBoxes */}
-      <div className="app__stats">
-        <InfoBox cases={120} total={1000} title="Coronavirus Cases" />
-        <InfoBox cases={120} total={1000} title="Recovered" />
-        <InfoBox cases={120} total={1000} title="Deaths" />
-      </div>
-
-      {/* Map */}
-
-      {/* Table */}
-
-      {/* Graph */}
+      <Card className="app__right">
+        {/* Table */}
+        {/* Graph */}
+        
+      </Card>
     </div>
   );
 }
