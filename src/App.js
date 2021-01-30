@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import FormControl from "@material-ui/core/FormControl";
 import { Select, MenuItem } from "@material-ui/core";
+import InfoBox from "./components/InfoBox/InfoBox";
 
 // https://disease.sh/v3/covid-19/countries
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
-  
+
   useEffect(() => {
     const getCountriesData = async () => {
       fetch("https://disease.sh/v3/covid-19/countries")
@@ -49,7 +50,13 @@ function App() {
           </Select>
         </FormControl>
       </div>
+
       {/* InfoBoxes */}
+      <div className="app__stats">
+        <InfoBox cases={120} total={1000} title="Coronavirus Cases" />
+        <InfoBox cases={120} total={1000} title="Recovered" />
+        <InfoBox cases={120} total={1000} title="Deaths" />
+      </div>
 
       {/* Map */}
 
