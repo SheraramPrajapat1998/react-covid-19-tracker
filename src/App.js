@@ -10,7 +10,16 @@ import Map from "./components/Map/Map";
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
 
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []);
+  
   useEffect(() => {
     const getCountriesData = async () => {
       fetch("https://disease.sh/v3/covid-19/countries")
@@ -37,6 +46,18 @@ function App() {
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
     setCountry(countryCode);
+
+    const url =
+      countryCode === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountry(countryCode);
+        setCountryInfo(data);
+      });
   };
 
   return (
@@ -59,18 +80,31 @@ function App() {
 
         {/* InfoBoxes */}
         <div className="app__stats">
-          <InfoBox cases={120} total={1000} title="Coronavirus Cases" />
-          <InfoBox cases={120} total={1000} title="Recovered" />
-          <InfoBox cases={120} total={1000} title="Deaths" />
+          <InfoBox
+            cases={countryInfo.todayCases}
+            total={countryInfo.cases}
+            title="Coronavirus Cases"
+          />
+          <InfoBox
+            cases={countryInfo.todayRecovered}
+            total={countryInfo.recovered}
+            title="Recovered"
+          />
+          <InfoBox
+            cases={countryInfo.todayDeaths}
+            total={countryInfo.deaths}
+            title="Deaths"
+          />
         </div>
         {/* Map */}
-        <Map/>
+        <Map />
       </div>
 
       <Card className="app__right">
+        <h3>Live Cases by Country</h3>
         {/* Table */}
+        <h3>Worldwide new cases</h3>
         {/* Graph */}
-        
       </Card>
     </div>
   );
