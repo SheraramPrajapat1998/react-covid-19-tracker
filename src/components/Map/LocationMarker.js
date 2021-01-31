@@ -5,7 +5,6 @@ function LocationMarker({ center }) {
   const map = useMapEvents({
     click() {
       map.locate();
-      console.log('clicked');
     },
     locationfound() {
       map.flyTo(center, map.getZoom());

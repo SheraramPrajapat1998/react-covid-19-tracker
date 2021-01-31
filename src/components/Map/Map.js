@@ -1,18 +1,13 @@
-import React, { useState } from "react";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMapEvents,
-} from "react-leaflet";
+import React from "react";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "./Map.css";
-import L, { map } from "leaflet";
+import L from "leaflet";
 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 import LocationMarker from "./LocationMarker";
+import { showDataOnMap } from "../../utils";
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -21,7 +16,7 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 
-function Map({ center, zoom }) {
+function Map({ countries, casesType, center, zoom }) {
   return (
     <div className="map">
       <h2>I'm Map </h2>
@@ -32,11 +27,7 @@ function Map({ center, zoom }) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <LocationMarker center={center} />
-        {/* <Marker position={center}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker> */}
+        {showDataOnMap(countries, casesType)}
       </MapContainer>
     </div>
   );
