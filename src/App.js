@@ -5,7 +5,7 @@ import { Select, MenuItem, Card } from "@material-ui/core";
 import InfoBox from "./components/InfoBox/InfoBox";
 import Map from "./components/Map/Map";
 import Table from "./components/Table/Table";
-import { sortData } from "./utils";
+import { prettyPrintStat, sortData } from "./utils";
 import LineGraph from "./components/LineGraph/LineGraph";
 
 // https://disease.sh/v3/covid-19/countries
@@ -92,18 +92,18 @@ function App() {
         {/* InfoBoxes */}
         <div className="app__stats">
           <InfoBox
-            cases={countryInfo.todayCases}
-            total={countryInfo.cases}
+            cases={prettyPrintStat(countryInfo.todayCases)}
+            total={prettyPrintStat(countryInfo.cases)}
             title="Coronavirus Cases"
           />
           <InfoBox
-            cases={countryInfo.todayRecovered}
-            total={countryInfo.recovered}
+            cases={prettyPrintStat(countryInfo.todayRecovered)}
+            total={prettyPrintStat(countryInfo.recovered)}
             title="Recovered"
           />
           <InfoBox
-            cases={countryInfo.todayDeaths}
-            total={countryInfo.deaths}
+            cases={prettyPrintStat(countryInfo.todayDeaths)}
+            total={prettyPrintStat(countryInfo.deaths)}
             title="Deaths"
           />
         </div>
