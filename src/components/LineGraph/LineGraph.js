@@ -17,11 +17,11 @@ const buildChartData = (data, casesType = "cases") => {
     if (lastDataPoint) {
       const newDataPoint = {
         date: date,
-        cases: data["cases"][date] - lastDataPoint,
+        cases: data[casesType][date] - lastDataPoint,
       };
       chartData.push(newDataPoint);
     }
-    lastDataPoint = data["cases"][date];
+    lastDataPoint = data[casesType][date];
   }
   return chartData;
 };
@@ -36,9 +36,8 @@ function LineGraph({ casesType = "cases" }) {
       await fetch(url)
         .then((response) => response.json())
         .then((data) => {
-          const chartData = buildChartData(data, casesType);
+          let chartData = buildChartData(data, casesType);
           setData(chartData);
-          console.log(chartData);
         });
     };
     fetchData();

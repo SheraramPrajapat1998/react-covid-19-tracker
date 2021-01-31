@@ -1,5 +1,5 @@
 import React from "react";
-import {Marker, Popup, useMapEvents } from "react-leaflet";
+import { Marker, Popup, useMapEvents } from "react-leaflet";
 
 function LocationMarker({ center }) {
   const map = useMapEvents({
@@ -17,6 +17,5 @@ function LocationMarker({ center }) {
     </Marker>
   );
 }
-
 
 export default LocationMarker;

@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
 import "./Table.css";
-import numeral from 'numeral';
-function Table({countries}) {
+import numeral from "numeral";
+
+function Table({ countries }) {
   return (
     <div className="table">
       {countries.map(({ countryInfo, country, cases }) => (
@@ -9,7 +10,7 @@ function Table({countries}) {
           key={country}
           style={{
             display: "flex",
-            alignContent: 'center',
+            alignContent: "center",
           }}
         >
           <td>

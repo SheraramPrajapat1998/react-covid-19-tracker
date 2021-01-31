@@ -1,11 +1,11 @@
-.table{
+.table {
   margin-top: 20px;
   height: 400px;
   overflow: scroll;
   color: #6a5d5d;
 }
 
-.table tr{
+.table tr {
   display: flex;
   justify-content: space-between;
 }
@@ -13,9 +13,9 @@
   text-align: center;
   padding: 0 0.5rem;
 } */
-.table td{
+.table td {
   padding: 0.5rem;
 }
-.table tr:nth-of-type(odd){
+.table tr:nth-of-type(odd) {
   background-color: #f3f2f8;
 }
