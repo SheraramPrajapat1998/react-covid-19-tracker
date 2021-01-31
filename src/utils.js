@@ -1,15 +1,19 @@
 import { Circle, Popup } from "react-leaflet";
 import numeral from "numeral";
-const casesTypeColors = {
+
+export const casesTypeColors = {
   cases: {
+    main: "#ff0000",
     hex: "#CC1034",
     multiplier: 400,
   },
   recovered: {
+    main: "#00ff00",
     hex: "#7dd71d",
     multiplier: 600,
   },
   deaths: {
+    main:"#ff0000",
     hex: "#fb4443",
     multiplier: 2500,
   },

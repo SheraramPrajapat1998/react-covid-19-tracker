@@ -9,6 +9,8 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { casesTypeColors } from "../../utils";
+
 
 const buildChartData = (data, casesType = "cases") => {
   const chartData = [];
@@ -55,8 +57,8 @@ function LineGraph({ casesType = "cases" }) {
           <Area
             type="monotone"
             dataKey="cases"
-            stroke="#ff0000"
-            fill="#FF6347"
+            stroke={casesTypeColors[casesType].main}
+            fill={casesTypeColors[casesType].hex}
           />
         </AreaChart>
       </ResponsiveContainer>
