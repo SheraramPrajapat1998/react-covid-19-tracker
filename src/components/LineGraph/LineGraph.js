@@ -16,8 +16,8 @@ const buildChartData = (data, casesType = "cases") => {
   for (let date in data.cases) {
     if (lastDataPoint) {
       const newDataPoint = {
-        x: date,
-        y: data["cases"][date] - lastDataPoint,
+        date: date,
+        cases: data["cases"][date] - lastDataPoint,
       };
       chartData.push(newDataPoint);
     }
@@ -38,6 +38,7 @@ function LineGraph({ casesType = "cases" }) {
         .then((data) => {
           const chartData = buildChartData(data, casesType);
           setData(chartData);
+          console.log(chartData);
         });
     };
     fetchData();
@@ -49,10 +50,15 @@ function LineGraph({ casesType = "cases" }) {
       <ResponsiveContainer>
         <AreaChart width={400} height={400} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="x" />
+          <XAxis dataKey="date" />
           <YAxis tickFormatter={(value) => numeral(value).format("0a")} />
           <Tooltip formatter={(value) => numeral(value).format("+0,0")} />
-          <Area type="monotone" dataKey="y" stroke="#ff0000" fill="#FF6347" />
+          <Area
+            type="monotone"
+            dataKey="cases"
+            stroke="#ff0000"
+            fill="#FF6347"
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>

@@ -33,7 +33,7 @@ function App() {
             name: country,
             value: countryInfo.iso2,
           }));
-          const sortedData = sortData(data)
+          const sortedData = sortData(data);
           setTableData(sortedData);
           setCountries(countries);
         });
@@ -109,10 +109,12 @@ function App() {
         {/* Table */}
         <h3>Live Cases by Country</h3>
         <Table countries={tableData} />
-        <h3>Worldwide new cases</h3>
+
         {/* Graph */}
+        <h3>Worldwide new cases</h3>
         <LineGraph />
       </Card>
+
     </div>
   );
 }
