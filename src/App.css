@@ -30,4 +30,8 @@ body{
   .app{
     flex-direction: column;
   }
+  .app__right{
+    margin: 30px 0 0 15px;
+    padding: 10px;
+  }
 }

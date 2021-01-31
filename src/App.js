@@ -7,6 +7,8 @@ import Map from "./components/Map/Map";
 import Table from "./components/Table/Table";
 import { sortData } from "./utils";
 import LineGraph from "./components/LineGraph/LineGraph";
+import { map } from "leaflet";
+import { useMapEvents } from "react-leaflet";
 
 // https://disease.sh/v3/covid-19/countries
 
@@ -15,6 +17,8 @@ function App() {
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [tableData, setTableData] = useState([]);
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -34,8 +38,8 @@ function App() {
             value: countryInfo.iso2,
           }));
           const sortedData = sortData(data);
-          setTableData(sortedData);
           setCountries(countries);
+          setTableData(sortedData);
         });
     };
     getCountriesData();
@@ -62,6 +66,16 @@ function App() {
       .then((data) => {
         setCountry(countryCode);
         setCountryInfo(data);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(4);
+
+        // const map = useMapEvents({map.flyTo(
+        //   [data.countryInfo.lat, data.countryInfo.long],
+        //   14,
+        //   {
+        //     duration: 2,
+        //   }
+        // )})
       });
   };
 
@@ -102,7 +116,7 @@ function App() {
           />
         </div>
         {/* Map */}
-        <Map />
+        <Map center={mapCenter} zoom={mapZoom} />
       </div>
 
       <Card className="app__right">
@@ -114,7 +128,6 @@ function App() {
         <h3>Worldwide new cases</h3>
         <LineGraph />
       </Card>
-
     </div>
   );
 }
