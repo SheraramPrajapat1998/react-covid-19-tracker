@@ -6,6 +6,7 @@ import InfoBox from "./components/InfoBox/InfoBox";
 import Map from "./components/Map/Map";
 import Table from "./components/Table/Table";
 import { sortData } from "./utils";
+import LineGraph from "./components/LineGraph/LineGraph";
 
 // https://disease.sh/v3/covid-19/countries
 
@@ -50,7 +51,6 @@ function App() {
 
   const onCountryChange = async (event) => {
     const countryCode = event.target.value;
-    setCountry(countryCode);
 
     const url =
       countryCode === "worldwide"
@@ -111,6 +111,7 @@ function App() {
         <Table countries={tableData} />
         <h3>Worldwide new cases</h3>
         {/* Graph */}
+        <LineGraph />
       </Card>
     </div>
   );
