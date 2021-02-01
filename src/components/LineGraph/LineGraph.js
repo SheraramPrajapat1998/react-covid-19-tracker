@@ -47,7 +47,6 @@ function LineGraph({ casesType = "cases" }) {
 
   return (
     <div style={{ width: "100%", height: 300 }}>
-      <h1>I'm a graph</h1>
       <ResponsiveContainer>
         <AreaChart width={400} height={400} data={data}>
           <CartesianGrid strokeDasharray="3 3" />

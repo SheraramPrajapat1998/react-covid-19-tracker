@@ -3,6 +3,7 @@
   height: 400px;
   overflow: scroll;
   color: #6a5d5d;
+  margin-bottom: 20px;
 }
 
 .table tr {

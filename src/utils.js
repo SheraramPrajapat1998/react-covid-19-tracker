@@ -13,7 +13,7 @@ export const casesTypeColors = {
     multiplier: 600,
   },
   deaths: {
-    main:"#ff0000",
+    main: "#ff0000",
     hex: "#fb4443",
     multiplier: 2500,
   },

@@ -19,8 +19,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 function Map({ countries, casesType, center, zoom }) {
   return (
     <div className="map">
-      <h2>I'm Map </h2>
-
       <MapContainer center={center} zoom={zoom} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
