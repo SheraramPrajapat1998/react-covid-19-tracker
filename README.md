@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# External packages used
+
+- **@material-ui/core** : styling
+- **numeral**: formatting numbers
+- **leaflet**, **react-leaflet**: map api, draw circles on map
+- **recharts**: line graph
+
+live: [https://sheraramprajapat1998.github.io/react-covid-19-tracker/](https://sheraramprajapat1998.github.io/react-covid-19-tracker/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
